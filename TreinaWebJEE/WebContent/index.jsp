@@ -8,6 +8,8 @@
 <title>Curso de Java Intermediário do TreinaWeb!</title>
 </head>
 <body>
+	<!-- ABAIXO UMA DIRETIVA (INCLUDE) -->
+	<%@ include file="menu.jsp"	 %>
 	<!-- ABAIXO UMA DECLARAÇÃO -->
 	<%!
 	// Método para pegar a data atual
