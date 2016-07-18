@@ -1,7 +1,7 @@
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,15 +10,33 @@
 </head>
 <body>
 	<!-- ABAIXO UMA DIRETIVA (INCLUDE) -->
-	<%@ include file="menu.jsp"	 %>
+	<%@ include file="menu.jsp"%>
+	<fieldset style="width: 200px">
+		<legend>Informações do Usuário</legend>
+		<form method="post" action="infoUsuario.jsp">	
+			<div style="font-weight: bold;">Nome Completo:</div>
+			<div>
+				<input type="text" name="nomeCompleto" />
+			</div>
+			<div style="font-weight: bold;">Nome de Usuário:</div>
+			<div>
+				<input type="text" name="nomeUsuario" />
+			</div>
+			<div style="font-weight: bold;">Senha:</div>
+			<div>
+				<input type="password" name="senha" />
+			</div>
+			<div>
+				<input type="submit" value="Enviar!" />
+			</div>
+		</form>
+	</fieldset>
 	<!-- ABAIXO UMA DECLARAÇÃO -->
-	<%!
-	// Método para pegar a data atual
+	<%!// Método para pegar a data atual
 	public String getDataAtual() {
 		return new Date().toString();
-	}
-	%>
-	
+	}%>
+
 	<h1>Bem-vindo ao curso de Java Intermediário do TreinaWeb!</h1>
 	<%
 		String mensagem = "";
@@ -26,12 +44,14 @@
 		out.println(mensagem);
 	%>
 	<!-- ABAIXO UMA EXPRESSÃO -->
-	<p>A data atual é <%= getDataAtual() %></p>
-	
+	<p>
+		A data atual é
+		<%=getDataAtual()%></p>
+
 	<%
 		String tabela = "";
 		tabela = "<table>";
-		for (int i = 0; i <=10; i++) {
+		for (int i = 0; i <= 10; i++) {
 			int resultado = 2 * i;
 			tabela += "<tr>";
 			tabela += "<td>";
@@ -44,37 +64,37 @@
 		}
 		tabela += "</table>";
 		out.println(tabela);
-		
-// 		int i = 0;
-// 		while (i <= 10) {
-// 			int resultado = 2 * i;
-// 			tabela += "<tr>";
-// 			tabela += "<td>";
-// 			tabela += "2 x " + i + " = ";
-// 			tabela += "</td>";
-// 			tabela += "<td>";
-// 			tabela += resultado;
-// 			tabela += "</td>";
-// 			tabela += "</tr>";
-// 			i++;
-// 		}
-// 		tabela += "</table>";
-// 		out.println(tabela);
 
-// 		int i = 0;
-// 		do {
-// 			int resultado = 2 * i;
-// 			tabela += "<tr>";
-// 			tabela += "<td>";
-// 			tabela += "2 x " + i + " = ";
-// 			tabela += "</td>";
-// 			tabela += "<td>";
-// 			tabela += resultado;
-// 			tabela += "</td>";
-// 			tabela += "</tr>";
-// 		} while (i != 11);
-// 		tabela += "</table>";
-// 		out.println(tabela);
+		// 		int i = 0;
+		// 		while (i <= 10) {
+		// 			int resultado = 2 * i;
+		// 			tabela += "<tr>";
+		// 			tabela += "<td>";
+		// 			tabela += "2 x " + i + " = ";
+		// 			tabela += "</td>";
+		// 			tabela += "<td>";
+		// 			tabela += resultado;
+		// 			tabela += "</td>";
+		// 			tabela += "</tr>";
+		// 			i++;
+		// 		}
+		// 		tabela += "</table>";
+		// 		out.println(tabela);
+
+		// 		int i = 0;
+		// 		do {
+		// 			int resultado = 2 * i;
+		// 			tabela += "<tr>";
+		// 			tabela += "<td>";
+		// 			tabela += "2 x " + i + " = ";
+		// 			tabela += "</td>";
+		// 			tabela += "<td>";
+		// 			tabela += resultado;
+		// 			tabela += "</td>";
+		// 			tabela += "</tr>";
+		// 		} while (i != 11);
+		// 		tabela += "</table>";
+		// 		out.println(tabela);
 	%>
 	<br />
 	<%
@@ -89,9 +109,9 @@
 		} else {
 			out.println("Boa madrugada!!");
 		}
-		
-// 		O 'MONTH' DO CALENDAR COMEÇA A CONTAR A PARTIR DO '0'
-// 		POR ISSO COLOCAMOS O '+1'
+
+		// 		O 'MONTH' DO CALENDAR COMEÇA A CONTAR A PARTIR DO '0'
+		// 		POR ISSO COLOCAMOS O '+1'
 		int mes = data.get(Calendar.MONTH) + 1;
 		switch (mes) {
 		case 1:
