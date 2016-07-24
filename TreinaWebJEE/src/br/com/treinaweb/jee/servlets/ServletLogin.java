@@ -53,6 +53,7 @@ public class ServletLogin extends HttpServlet {
 				Cookie cookie = new Cookie("_nomeUsuarioConectado_", usuario.getNome());
 				cookie.setMaxAge(60 * 60);
 				response.addCookie(cookie);
+				request.getSession().setAttribute("_usuario_", usuario);
 				response.sendRedirect("index.jsp");
 			} else {
 				response.sendRedirect("loginIncorreto.jsp");
