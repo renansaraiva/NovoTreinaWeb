@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+
+.caixa {
+	width: 200px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.divs {
+	font-weight: bold;
+	padding-bottom: 3px;
+}
+
+label.textoDiv {
+	display: inline-block;
+	width: 105px;
+}
