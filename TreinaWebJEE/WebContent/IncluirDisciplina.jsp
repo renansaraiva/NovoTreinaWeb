@@ -9,6 +9,7 @@
 <script src="js/funcoes.js" type="text/javascript"></script>
 </head>
 <body>
+	<%@ include file="menu.jsp"%>
 	<fieldset style="width: 500px;">
 		<legend class="caixa">Informações da Disciplina</legend>
 		<form action="incluirDisciplina" method="post">
@@ -20,20 +21,21 @@
 			</div>
 			<div class="divs">
 				<label class="textoDiv">Tipo:</label>
-				<select style="margin-left: -4px;">
+				<select style="margin-left: -4px;" name="tipoDisciplina">
 					<option value="vazio"></option>
-					<option value="min">Mínima</option>
-					<option value="max">Máxima</option>
-					<option value="etv">Eletiva</option>
-					<option value="opt">Optativa</option>
+					<option value="Minima">Mínima</option>
+					<option value="Maxima">Máxima</option>
+					<option value="Eletiva">Eletiva</option>
+					<option value="Optativa">Optativa</option>
+					
 				</select>
 			</div>
 			<div class="divs">
 				<label class="textoDiv">Modalidade:</label>
-				<select style="margin-left: -4px;">
+				<select style="margin-left: -4px;" name="modalidade">
 					<option value="vazio"></option>
-					<option value="pre">Presencial</option>
-					<option value="ead">Total EAD</option>
+					<option value="Presencial">Presencial</option>
+					<option value="Total EAD">Total EAD</option>
 				</select>
 			</div>			
 			<div class="divs">
@@ -42,7 +44,7 @@
 				<input type="radio" name="preRequisito" value="0" style="width:10px;" onchange="showInput(this, name);"/>Não
 				<div class="divs" id='codigoPreRequisito' style="display: none; text-align: center">
 					Código:
-					<input type='text' name='codigoPreRequisito' maxlength='7' style='width: 60px;'/>
+					<input type='text' name='codPreRequisito' maxlength='7' style='width: 60px;'/>
 				</div>
 			</div>
 			<div class="divs">
@@ -63,7 +65,8 @@
 				<input type="text" name="desconto" maxlength="5" style="width: 35px" />%
 			</div>
 			<div>
-				<input type="submit" value="Incluir" />
+				<input type="submit" value="Incluir" name="acao">
+				<input type="submit" value="Consultar" name="acao" id='consulta' onclick="validaConsulta(codigoDisciplina, name);"/>
 				<input type="submit" value="Limpar" />
 				<input type="submit" value="Voltar" />
 			</div>

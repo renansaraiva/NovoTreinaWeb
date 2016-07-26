@@ -11,53 +11,55 @@ import br.com.treinaweb.jee.models.Usuario;
 
 public class DisciplinaDAO {
 
-	public static Disciplina incluir (int idDisciplina, String codigoDisciplina, String nomeDisciplina, String tipoDisciplina, String modalidadeDisciplina, String codigoPreRequisito, float valorDisciplina, int periodoDisciplina, float descontoDisciplina)
+	public static int incluir(String codigoDisciplina, String nomeDisciplina, String tipoDisciplina,
+			String modalidadeDisciplina, String codigoPreRequisito, float valorDisciplina, int periodoDisciplina,
+			float descontoDisciplina)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection conn = ConexaoUtils.criarConexao();
+
+		int disciplina;
+		PreparedStatement statement = conn.prepareStatement(
+				"INSERT INTO disc_disciplina(disc_codigo, disc_nome, disc_tipo, disc_modalidade, disc_cod_pre_req, disc_valor, disc_periodo, disc_desconto)"
+						+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+
+		statement.setString(1, codigoDisciplina);
+		statement.setString(2, nomeDisciplina);
+		statement.setString(3, tipoDisciplina);
+		statement.setString(4, modalidadeDisciplina);
+		statement.setString(5, codigoPreRequisito);
+		statement.setFloat(6, valorDisciplina);
+		statement.setInt(7, periodoDisciplina);
+		statement.setFloat(8, descontoDisciplina);
+		disciplina = statement.executeUpdate();
+
+		ConexaoUtils.fecharConexao(conn);
+
+		return disciplina;
+	}
+
+	public static Disciplina consultar(String codigo)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Connection conn = ConexaoUtils.criarConexao();
 
 		Disciplina disciplina = null;
-		PreparedStatement statement = conn
-				.prepareStatement("INSERT INTO disciplinas" + "VALUES ?, ?, ?, ?, ?, ?, ?, ?");
-		
-		statement.setInt(1, idDisciplina);
-		statement.setString(2, codigoDisciplina);
-		statement.setString(3, nomeDisciplina);
-		statement.setString(4, tipoDisciplina);
-		statement.setString(5, modalidadeDisciplina);
-		statement.setString(6, codigoPreRequisito);
-		statement.setFloat(7, valorDisciplina);
-		statement.setInt(8, periodoDisciplina);
-		statement.setFloat(9, descontoDisciplina);
-		
+		PreparedStatement statement = conn.prepareStatement("SELECT * FROM disc_disciplina WHERE disc_codigo=?");
+		statement.setString(1, codigo);
 		ResultSet rs = statement.executeQuery();
 
-//		private int idDisciplina;
-//		private String codigoDisciplina;
-//		private String nomeDisciplina;
-//		private String tipoDisciplina;
-//		private String modalidadeDisciplina;
-//		private String codigoPreRequisito;
-//		private float valorDisciplina;
-//		private int periodoDisciplina;
-//		private float descontoDisciplina;
-		
 		if (rs.next()) {
 			disciplina = new Disciplina();
-			disciplina.setIdDisciplina(rs.getInt("id"));
-			disciplina.setCodigoDisciplina(rs.getString("codigo"));
-			disciplina.setNomeDisciplina(rs.getString("nome"));
-			disciplina.setTipoDisciplina(rs.getString("tipo"));
-			
-			
-//			usuario = new Usuario();
-//			usuario.setId(rs.getInt("usr_id"));
-//			usuario.setNome(rs.getString("usr_nome"));
-//			usuario.setNomeUsuario(rs.getString("usr_login"));
-//			usuario.setSenha(rs.getString("usr_senha"));
+			disciplina.setCodigoDisciplina(rs.getString("disc_codigo"));
+			disciplina.setNomeDisciplina(rs.getString("disc_nome"));
+			disciplina.setTipoDisciplina(rs.getString("disc_tipo"));
+			disciplina.setModalidadeDisciplina(rs.getString("disc_modalidade"));
+			disciplina.setCodigoPreRequisito(rs.getString("disc_cod_pre_req"));
+			disciplina.setValorDisciplina(rs.getFloat("disc_valor"));
+			disciplina.setPeriodoDisciplina(rs.getInt("disc_periodo"));
+			disciplina.setDescontoDisciplina(rs.getFloat("disc_desconto"));
 		}
 
 		ConexaoUtils.fecharConexao(conn);
 
-		return usuario;
+		return disciplina;
 	}
 }

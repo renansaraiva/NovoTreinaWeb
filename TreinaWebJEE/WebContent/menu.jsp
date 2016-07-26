@@ -8,24 +8,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		String valorCookie = "";
-		Cookie[] cookies = request.getCookies();
-		for (Cookie c : cookies) {
-			if (c.getName().equals("_nomeUsuarioConectado_")); {
-				valorCookie = c.getValue();
-			}
-			break;
-		}
+<%-- 	<% --%>
+<!-- // 		String valorCookie = ""; -->
+<!-- // 		Cookie[] cookies = request.getCookies(); -->
+<!-- // 		for (Cookie c : cookies) { -->
+<!-- // 			if (c.getName().equals("_nomeUsuarioConectado_")); { -->
+<!-- // 				valorCookie = c.getValue(); -->
+<!-- // 			} -->
+<!-- // 			break; -->
+<!-- // 		} -->
 		
-		if (request.getSession().getAttribute("_usuario_") == null) {
-			response.sendRedirect("login.jsp");
-		}
-	%>
+<!-- // 		if (request.getSession().getAttribute("_usuario_") == null) { -->
+<!-- // 			response.sendRedirect("login.jsp"); -->
+<!-- // 		} -->
+<%-- 	%> --%>
 	<a href="http://www.google.com.br">Ir ao Google</a> | 
 	<a href="http://www.bing.com.br">Ir ao Bing</a> | 
 	<a href="http://www.csc.com">Ir a CSC</a> | 
-	Bem-vindo, <%= valorCookie %>
+	<a href="IncluirDisciplina.jsp">Disciplina</a>
+	<a href=""></a>
+<%-- 	Bem-vindo, <%= valorCookie %> --%>
 	<hr />
 </body>
 </html>

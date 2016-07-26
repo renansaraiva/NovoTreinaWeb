@@ -14,3 +14,11 @@ function showInput(element, name) {
 		}
 	}
 }
+
+function validaConsulta(element, name) {
+	var x = document.getElementById("codigoDisciplina").value;
+	if (x == null) {
+		alert("O campo Código da disciplina está vazio. Por vafor, preencha-o para realizar a consulta.");
+		stop();
+	}
+}
