@@ -9,7 +9,10 @@
 <body>
 	<fieldset style="width: 200px">
 		<legend>Informações de Login</legend>
-		<form action="login" method="post">
+		<%
+			request.getSession().setAttribute("forward", "login");
+		%>
+		<form action="forward.jsp" method="post">
 			<div style="font-weight: bold">Nome de Usuário</div>
 			<div>
 				<input type="text" name="nomeUsuario" />
