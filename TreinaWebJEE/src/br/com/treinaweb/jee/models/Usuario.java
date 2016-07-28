@@ -1,7 +1,14 @@
 package br.com.treinaweb.jee.models;
 
-public class Usuario {
+import java.io.Serializable;
 
+public class Usuario implements Serializable{
+
+	/**
+	 * JavaBean
+	 */
+	private static final long serialVersionUID = -3641377187519320780L;
+	
 	private int id;
 	private String nome;
 	private String nomeUsuario;
