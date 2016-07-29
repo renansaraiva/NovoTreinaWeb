@@ -9,7 +9,8 @@
 <body>
 	<jsp:useBean id="usuario" class="br.com.treinaweb.jee.models.Usuario"
 		scope="session"></jsp:useBean>
-	<jsp:setProperty property="*" name="usuario"/>
+	<jsp:setProperty property="nomeUsuario" name="usuario" value="${param.nomeUsuario}"/>
+	<jsp:setProperty property="senha" name="usuario" value="${param.senha}"/>
 	<jsp:forward page='<%= request.getSession().getAttribute("forward").toString()%>'></jsp:forward>
 </body>
 </html>
