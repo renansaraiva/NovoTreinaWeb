@@ -32,6 +32,13 @@
 			<div>
 				<input type="submit" value="Login" />
 			</div>
+			<jsp:useBean id="data" class="java.util.Date"></jsp:useBean>
+			<fmt:formatNumber value="123" type="currency"></fmt:formatNumber>
+			<fmt:formatNumber value="123" pattern=".000"></fmt:formatNumber>
+			<br />
+			<fmt:formatDate value="${data }" dateStyle="long" timeStyle="long"/>
+			<br />
+			<fmt:formatDate value="${data }" pattern="dd/MM/yyyy hh:mm:ss"/>
 		</form>
 	</fieldset>
 </body>
