@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Exemplo Tag setDatasource</title>
+<title>Exemplo Tag setDataSource I</title>
 </head>
 <body>
 	<sql:setDataSource var="conn" dataSource="jdbc:mysql://localhost:3306/tw_java_intermediario,com.mysql.jdbc.Driver,root,root"/>
@@ -27,5 +27,25 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<br />
+	<form action="exemploTagSetDatasource2.jsp">
+		<table style="border: 1px; border-style: solid; font-family:sans-serif;">
+			<tr>
+				<td style="font-weight: bold;" align="center">Nome do Usuário</td>
+				<td><input name="nomeUsuario" type="text"/></td>
+			</tr>
+			<tr>
+				<td style="font-weight: bold;" align="center">Email</td>
+				<td><input name="email" type="text"/></td>
+			</tr>
+			<tr>
+				<td style="font-weight: bold;" align="center">Senha</td>
+				<td><input name="senha" type="password"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" value="Cadastrar"/></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
