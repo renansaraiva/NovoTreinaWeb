@@ -8,6 +8,6 @@
 <title>Exemplo Tag Saudacao (Tag Customizada)</title>
 </head>
 <body>
-	<tw:saudacao />
+	<tw:saudacao nome="Renan"/>
 </body>
 </html>

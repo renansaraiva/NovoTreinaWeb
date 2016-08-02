@@ -12,5 +12,10 @@ version="2.1">
 		<display-name>saudacao</display-name>
 		<name>saudacao</name>
 		<tag-class>br.com.treinaweb.jee.tags.SaudacaoTag</tag-class>
+		<attribute>
+			<name>nome</name>
+			<type>java.lang.String</type>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 	</tag>
 </taglib>
