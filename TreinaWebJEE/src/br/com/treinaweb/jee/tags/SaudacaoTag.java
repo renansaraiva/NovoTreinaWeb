@@ -12,8 +12,10 @@ public class SaudacaoTag extends TagSupport {
 	
 	@Override
 	public int doEndTag() throws JspException{
+		
 		Calendar calendar = new GregorianCalendar();
 		int hora = calendar.get(Calendar.HOUR_OF_DAY);
+		
 		try {
 			if (hora >= 0 && hora < 6) {
 				pageContext.getOut().print("Boa Madrugada!");
