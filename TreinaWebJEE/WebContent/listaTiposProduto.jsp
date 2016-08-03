@@ -13,6 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="inserirTipoProduto.jsp">Criar novo tipo de produto</a>
 	<%
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("TwPersistenceUnit");
 		EntityManager em = factory.createEntityManager();
