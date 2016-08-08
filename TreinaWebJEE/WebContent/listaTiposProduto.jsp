@@ -28,6 +28,9 @@
 		out.print("			<td>");
 		out.print("				Tipo de Produto");
 		out.print("			</td>");
+		out.print("			<td>");
+		out.print("				");
+		out.print("			</td>");
 		out.print("		</tr>");
 		out.print("	</thead>");
 		out.print("	<tbody>");
@@ -38,6 +41,9 @@
 			out.print("			</td>");
 			out.print("			<td>");
 			out.print("				" + tp.getNome());
+			out.print("			</td>");
+			out.print("			<td>");
+			out.print("				<a href='editarTipoProduto.jsp?idTipoProduto=" + tp.getId() + "'>Editar</a>");
 			out.print("			</td>");
 			out.print("		</tr>");
 		}
