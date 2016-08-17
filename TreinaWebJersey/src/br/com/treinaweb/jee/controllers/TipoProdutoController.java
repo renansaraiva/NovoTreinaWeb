@@ -6,7 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -27,6 +30,22 @@ public class TipoProdutoController {
 		List<TipoProduto> tiposProduto = q.getResultList();
 		
 		return Response.ok().entity(tiposProduto).build();
+	}
+	
+	@POST
+	@Path("/new")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public Response createTipoProduto(@FormParam("nomeTipoProduto")String nomeTipoProduto) {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("TwPersistenceUnit");
+		EntityManager em = factory.createEntityManager();
+		TipoProduto tp = new TipoProduto();
+		tp.setNome(nomeTipoProduto);
+		em.getTransaction().begin();
+		em.persist(tp);
+		em.getTransaction().commit();
+		em.close();
+		
+		return Response.ok().build();
 	}
 	
 }
