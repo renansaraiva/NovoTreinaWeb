@@ -10,6 +10,8 @@
 <body>
 	<h2>Listagem de Categorias</h2>
 	<br />
+	<a href="criarCategoria.jsp">Criar nova categoria...</a>
+	<br />
 	<table>
 	<thead>
 		<tr>
