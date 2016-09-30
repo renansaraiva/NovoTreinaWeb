@@ -43,6 +43,11 @@ public class ServletCategoriaController extends HttpServlet {
 			Categoria categoriaASerEditada = CategoriaDAO.porId(idCategoria);
 			request.getSession().setAttribute("categoria", categoriaASerEditada);
 			response.sendRedirect("editarCategoria.jsp");
+		} else if (request.getParameter("acao") != null && request.getParameter("acao").toString().equals("excluir")) {
+			int idCategoria = Integer.parseInt(request.getParameter("id"));
+			Categoria categoriaASerExcluida = CategoriaDAO.porId(idCategoria);
+			request.getSession().setAttribute("categoria", categoriaASerExcluida);
+			response.sendRedirect("excluirCategoria.jsp");
 		} else {
 			selecionarTodasCategorias(request, response);
 		}
@@ -62,11 +67,14 @@ public class ServletCategoriaController extends HttpServlet {
 		
 		if (request.getParameter("acao") != null && request.getParameter("acao").toString().equals("editar")) {
 			doPut(request, response);
+		} else if (request.getParameter("acao") != null && request.getParameter("acao").toString().equals("excluir")) {
+			doDelete(request, response);
 		} else {
 			Categoria novaCategoria = new Categoria();
 			try {
 				BeanUtils.populate(novaCategoria, request.getParameterMap());
 				CategoriaDAO.inserir(novaCategoria);
+				request.getSession().removeAttribute("categoria");
 				doGet(request, response);
 			} catch (IllegalAccessException | InvocationTargetException e) {
 				doGet(request, response);
@@ -93,7 +101,15 @@ public class ServletCategoriaController extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Categoria categoriaASerExcluida = new Categoria();
+		try {
+			BeanUtils.populate(categoriaASerExcluida, request.getParameterMap());
+			CategoriaDAO.excluir(categoriaASerExcluida);
+			request.getSession().removeAttribute("categoria");
+			selecionarTodasCategorias(request, response);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			doGet(request, response);
+		}
 	}
 
 }

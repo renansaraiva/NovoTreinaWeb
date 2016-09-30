@@ -30,11 +30,16 @@
 				<td>${categoria.id }</td>
 				<td>${categoria.nome }</td>
 				<td>
-					<c:url value="categorias" var="link">
+					<c:url value="categorias" var="linkEditar">
 						<c:param name="acao" value="editar"></c:param>
 						<c:param name="id" value="${categoria.id }"></c:param>
 					</c:url>
-					<a href="${link }">Editar</a>
+					<a href="${linkEditar }">Editar</a> | 
+					<c:url value="categorias" var="linkExcluir">
+						<c:param name="acao" value="excluir"></c:param>
+						<c:param name="id" value="${categoria.id }"></c:param>
+					</c:url>
+					<a href="${linkExcluir }">Excluir</a>
 				</td>
 			</tr>
 		</c:forEach>
