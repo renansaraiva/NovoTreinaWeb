@@ -35,8 +35,8 @@ public class CategoriaDAO {
 	
 	public static void atualizar (Categoria categoria) {
 		EntityManager em = JpaUtils.criarEntityManager();
+		categoria = em.merge(categoria);
 		em.getTransaction().begin();
-		em.merge(categoria);
 		em.persist(categoria);
 		em.getTransaction().commit();
 		em.close();
@@ -44,8 +44,8 @@ public class CategoriaDAO {
 	
 	public static void excluir (Categoria categoria) {
 		EntityManager em = JpaUtils.criarEntityManager();
+		categoria = em.merge(categoria);
 		em.getTransaction().begin();
-		em.merge(categoria);
 		em.remove(categoria);
 		em.getTransaction().commit();
 		em.close();

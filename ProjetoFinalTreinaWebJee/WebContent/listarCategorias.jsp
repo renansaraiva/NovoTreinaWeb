@@ -21,12 +21,21 @@
 			<td>
 				Nome da Categoria
 			</td>
+			<td>
+			</td>
 		</tr>
 	</thead>
 		<c:forEach var="categoria" items='${sessionScope["categorias"]}'>
 			<tr>
 				<td>${categoria.id }</td>
 				<td>${categoria.nome }</td>
+				<td>
+					<c:url value="categorias" var="link">
+						<c:param name="acao" value="editar"></c:param>
+						<c:param name="id" value="${categoria.id }"></c:param>
+					</c:url>
+					<a href="${link }">Editar</a>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
